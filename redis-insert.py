@@ -1,11 +1,14 @@
+import sys
 from sys import stdin, stdout
-from uuid import uuid1
 import json
 import redis
 
-conn = redis.Redis
+conn = redis.Redis()
 while True:
-    diff = json.loads(stdin.readline()).get('delta')
-    conn.setex(str(uuid1()),diff,120)
-    print(json.dumps({'delta':diff}))
+    line = sys.stdin.readline()
+    d = json.loads(line)
+    delta = d["delta"]
+    time = d["t"]
+    conn.setex(time, delta, 120)
+    print (json.dumps({"time":time, "delta":delta}))
     stdout.flush()
