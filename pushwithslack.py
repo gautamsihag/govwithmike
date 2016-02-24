@@ -5,6 +5,8 @@
 # desired period starts or is regained, the duration of the previous span of time is sent with the
 # message.
 #
+# I did it myself but not without taking a look at:
+# https://github.com/jonahsmith/realtime-storytelling/blob/master/assignment2/slack.py
 # The webhook URL is stored in tha variable 'url' in CONFIG_SLACK.py
 from sys import stdin, stdout, exit
 import requests
